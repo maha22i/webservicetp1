@@ -14,7 +14,46 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@webservicetp1/api/core/abstract": [
+        "libs/api/core/abstract/src/index.ts"
+      ],
+      "@webservicetp1/api/core/error": ["libs/api/core/error/src/index.ts"],
+      "@webservicetp1/api/core/logging": ["libs/api/core/logging/src/index.ts"],
+      "@webservicetp1/api/core/pagination": [
+        "libs/api/core/pagination/src/index.ts"
+      ],
+      "@webservicetp1/api/documentation/core": [
+        "libs/api/documentation/core/src/index.ts"
+      ],
+      "@webservicetp1/api/repository/core": [
+        "libs/api/repository/core/src/index.ts"
+      ],
+      "@webservicetp1/api/repository/error": [
+        "libs/api/repository/error/src/index.ts"
+      ],
+      "@webservicetp1/api/validation/core": [
+        "libs/api/validation/core/src/index.ts"
+      ],
+      "@webservicetp1/api/validation/id": [
+        "libs/api/validation/id/src/index.ts"
+      ],
+      "@webservicetp1/api/validation/pagination": [
+        "libs/api/validation/pagination/src/index.ts"
+      ],
+      "@webservicetp1/common/resource/core": [
+        "libs/common/resource/core/src/index.ts"
+      ],
+      "@webservicetp1/common/resource/equipe": [
+        "libs/common/resource/equipe/src/index.ts"
+      ],
+      "@webservicetp1/common/resource/error": [
+        "libs/common/resource/error/src/index.ts"
+      ],
+      "@webservicetp1/common/resource/match": [
+        "libs/common/resource/match/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

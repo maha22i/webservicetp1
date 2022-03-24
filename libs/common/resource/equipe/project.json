@@ -1,0 +1,23 @@
+{
+  "root": "libs/common/resource/equipe",
+  "sourceRoot": "libs/common/resource/equipe/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/common/resource/equipe/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/common/resource/equipe"],
+      "options": {
+        "jestConfig": "libs/common/resource/equipe/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
