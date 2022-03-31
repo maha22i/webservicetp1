@@ -15,7 +15,7 @@ import {
 } from './equipe.entity';
 import { EquipeService } from './equipe.service';
 
-describe('BookService', () => {
+describe('EquipeService', () => {
   let service: EquipeService;
   let mapperMock: Partial<EquipeMapper>;
   let modelMock: Partial<Model<EquipeDocument>>;
@@ -57,15 +57,15 @@ describe('BookService', () => {
           const entities: EquipeEntityWithId[] = [
             {
               id: '',
-              Name: '',
-              Home: '',
-              Away: '',
+              NomEquipe: '',
+              NomEquipeDomicile: '',
+              NomEquipeExterieur: '',
             },
             {
               id: '',
-              Name: '',
-              Home: '',
-              Away: '',
+              NomEquipe: '',
+              NomEquipeDomicile: '',
+              NomEquipeExterieur: '',
             },
           ];
           mockingoose(modelMock)
