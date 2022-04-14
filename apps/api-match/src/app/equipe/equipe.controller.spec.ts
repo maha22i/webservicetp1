@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { EquipeController } from './equipe.controller';
 import { EquipeService } from './equipe.service';
 import { EquipeDto } from '@webservicetp1/common/resource/equipe';
+import { CacheModule } from '@nestjs/common';
 
 describe('EquipeController', () => {
   let controller: EquipeController;
@@ -11,6 +12,7 @@ describe('EquipeController', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [CacheModule.register()],
       controllers: [EquipeController],
     })
       .useMocker((token) => {
