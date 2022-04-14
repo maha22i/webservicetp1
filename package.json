@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test"
+    "start": "node ./dist/apps/api-match/main.js",
+    "build": "nx run api-match:build:production",
+    "test": "nx run-many --target=test -all --parallel"
   },
   "private": true,
   "devDependencies": {
@@ -13,6 +13,7 @@
     "@nestjs/testing": "^8.0.0",
     "@nrwl/cli": "13.8.5",
     "@nrwl/eslint-plugin-nx": "13.8.5",
+    "@nrwl/express": "^13.9.5",
     "@nrwl/jest": "13.8.5",
     "@nrwl/linter": "13.8.5",
     "@nrwl/nest": "^13.8.5",
@@ -41,12 +42,14 @@
     "@nestjs/mongoose": "^9.0.2",
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/swagger": "^5.2.0",
+    "cache-manager": "^3.6.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "compression": "^1.7.4",
+    "express-winston": "^4.2.0",
     "helmet": "^5.0.2",
     "logger": "^0.0.1",
-    "mongodb-memory-server": "^8.4.1",
+    "mongodb-memory-server": "^8.4.2",
     "mongoose": "^6.2.5",
     "nest-winston": "^1.6.2",
     "reflect-metadata": "^0.1.13",

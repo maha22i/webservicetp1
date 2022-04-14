@@ -13,7 +13,7 @@ import {
 
 export const MatchExample: MatchDto = {
   id: '6214c0f2857cfb3569c19166',
-  Nom: 'J.K',
+  Nom: 'real vs barça',
   Date: '12-02-2010',
   Resultat: '1-5',
 };

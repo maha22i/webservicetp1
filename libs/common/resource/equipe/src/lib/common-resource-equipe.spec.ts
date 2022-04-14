@@ -5,3 +5,4 @@ describe('commonResourceEquipe', () => {
     expect(commonResourceEquipe()).toEqual('common-resource-equipe');
   });
 });
+

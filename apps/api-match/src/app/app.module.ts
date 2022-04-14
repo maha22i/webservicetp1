@@ -1,5 +1,5 @@
 import { Module, ValidationPipe } from '@nestjs/common';
-import { APP_FILTER, APP_PIPE } from '@nestjs/core';
+import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
 import {
   ApiExceptionFilter,
@@ -13,6 +13,7 @@ import { winstonConfig } from './common/logging.config';
 import { WinstonModule } from 'nest-winston';
 import { environment } from '../environments/environment.prod';
 import { mongoDbUri } from './database.util';
+import { ClientCacheInterceptor } from './client-cache.interceptor';
 
 @Module({
   imports: [
@@ -45,6 +46,10 @@ import { mongoDbUri } from './database.util';
     {
       provide: APP_FILTER,
       useClass: ApiExceptionFilter,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: ClientCacheInterceptor,
     },
   ],
 })

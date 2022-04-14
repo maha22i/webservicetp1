@@ -1,4 +1,5 @@
 import { format, LoggerOptions, transports } from 'winston';
+import { environment } from '../../environments/environment';
 
 const colorizer = format.colorize();
 const formatProcess = format((info) => {
@@ -29,13 +30,17 @@ export const winstonConfig: LoggerOptions = {
   level: 'debug',
   format: format.combine(format.timestamp(), format.json()),
   transports: [
-    new transports.File({
-      filename: 'rest-api.error.log',
-      level: 'error',
-    }),
-    new transports.File({
-      filename: 'rest-api.debug.log',
-    }),
+    ...(environment.production
+      ? []
+      : [
+          new transports.File({
+            filename: 'rest-api.error.log',
+            level: 'error',
+          }),
+          new transports.File({
+            filename: 'rest-api.debug.log',
+          }),
+        ]),
     new transports.Console({
       format: format.combine(
         format.timestamp({ format: 'DD/MM/YYYY, HH:mm:ss' }),

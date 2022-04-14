@@ -7,8 +7,14 @@ describe('MatchController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [MatchController],
-      providers: [MatchService],
-    }).compile();
+    })
+      .useMocker((token) => {
+        if (token === MatchService) {
+          const serviceMock: Partial<MatchService> = {};
+          return serviceMock;
+        }
+      })
+      .compile();
 
     controller = module.get<MatchController>(MatchController);
   });
