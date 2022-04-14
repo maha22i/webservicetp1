@@ -6,6 +6,6 @@ COPY . .
 RUN npm ci
 
 
-RUN ./node_modules/.bin/nx run  api-match:build
+RUN npm run build
 
-CMD [ "node", "./dist/apps/api-match/main.js" ]
+CMD [ "npm", "run", "start" ]
