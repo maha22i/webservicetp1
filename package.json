@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./dist/apps/api-match/main.js",
     "build": "nx run api-match:build:production",
-    "test": "nx run-many --target=test -all --parallel"
+    "test": "nx run-many --target=test --all --parallel",
+    "lint": "nx run-many --target=lint --all"
   },
   "private": true,
   "devDependencies": {
