@@ -11,7 +11,7 @@ import { EquipeModule } from './equipe/equipe.module';
 import { MatchModule } from './match/match.module';
 import { winstonConfig } from './common/logging.config';
 import { WinstonModule } from 'nest-winston';
-import { environment } from '../environments/environment.prod';
+import { environment } from '../environments/environment';
 import { mongoDbUri } from './database.util';
 import { ClientCacheInterceptor } from './client-cache.interceptor';
 
