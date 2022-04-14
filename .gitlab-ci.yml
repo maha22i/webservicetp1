@@ -30,4 +30,4 @@ heroku:
     - gem install dpl
     - dpl --provider=heroku --app=ingesup-m1-ws-library --api-key=$HEROKU_API_KEY
   only:
-    - master
+    - main
