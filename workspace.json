@@ -15,6 +15,7 @@
     "common-resource-core": "libs/common/resource/core",
     "common-resource-equipe": "libs/common/resource/equipe",
     "common-resource-error": "libs/common/resource/error",
-    "common-resource-match": "libs/common/resource/match"
+    "common-resource-match": "libs/common/resource/match",
+    "scrap-task": "apps/scrap-task"
   }
 }

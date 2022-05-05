@@ -1,0 +1,52 @@
+{
+  "root": "apps/scrap-task",
+  "sourceRoot": "apps/scrap-task/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/scrap-task",
+        "main": "apps/scrap-task/src/main.ts",
+        "tsConfig": "apps/scrap-task/tsconfig.app.json",
+        "assets": ["apps/scrap-task/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/scrap-task/src/environments/environment.ts",
+              "with": "apps/scrap-task/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "scrap-task:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/scrap-task/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/scrap-task"],
+      "options": {
+        "jestConfig": "apps/scrap-task/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
