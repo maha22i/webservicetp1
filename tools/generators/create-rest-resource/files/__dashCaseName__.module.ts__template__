@@ -1,0 +1,20 @@
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { <%= pascalCaseName %>Entity, <%= pascalCaseName %>Schema } from './<%= dashCaseName %>.entity';
+import { <%= pascalCaseName %>Controller } from './<%= dashCaseName %>.controller';
+import { <%= pascalCaseName %>Mapper } from './<%= dashCaseName %>.mapper';
+import { <%= pascalCaseName %>Service } from './<%= dashCaseName %>.service';
+
+@Module({
+  imports: [
+    MongooseModule.forFeature([
+      {
+        name: <%= pascalCaseName %>Entity.name,
+        schema: <%= pascalCaseName %>Schema
+      }
+    ])
+  ],
+  controllers: [<%= pascalCaseName %>Controller],
+  providers: [<%= pascalCaseName %>Mapper, <%= pascalCaseName %>Service]
+})
+export class <%= pascalCaseName %>Module {}

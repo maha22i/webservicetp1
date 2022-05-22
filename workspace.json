@@ -9,6 +9,9 @@
     "api-match": "apps/api-match",
     "api-repository-core": "libs/api/repository/core",
     "api-repository-error": "libs/api/repository/error",
+    "api-repository-uri": "libs/api/repository/uri",
+    "api-service-equipe": "libs/api/service/equipe",
+    "api-service-match": "libs/api/service/match",
     "api-validation-core": "libs/api/validation/core",
     "api-validation-id": "libs/api/validation/id",
     "api-validation-pagination": "libs/api/validation/pagination",
@@ -16,6 +19,7 @@
     "common-resource-equipe": "libs/common/resource/equipe",
     "common-resource-error": "libs/common/resource/error",
     "common-resource-match": "libs/common/resource/match",
+    "graphql": "apps/graphql",
     "scrap-task": "apps/scrap-task"
   }
 }

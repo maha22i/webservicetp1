@@ -7,7 +7,6 @@ import {
   EquipeUpdateDto,
 } from '@webservicetp1/common/resource/equipe';
 import {
-  EquipeDocument,
   EquipeEntity,
   EquipeEntityWithId,
 } from './equipe.entity';

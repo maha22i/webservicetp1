@@ -1,0 +1,74 @@
+import { paramsExceptionFactory, resourceExceptionFactory } from '@webservicetp1/api/core/abstract';
+import { PaginatedItems, PaginatedItemsInterceptor, PaginationMappedParams, PaginationParamsValidation } from '@webservicetp1/api/core/pagination';
+import { IsObjectIdPipe } from '@webservicetp1/api/validation/id';
+import { PaginationMappedParamsPipe } from '@webservicetp1/api/validation/pagination';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Put, Query, UseInterceptors, ValidationPipe } from '@nestjs/common';
+import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse, ApiNoContentResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { Observable } from 'rxjs';
+import { Api<%= pascalCaseName %>CreateDto, Api<%= pascalCaseName %>Dto, Api<%= pascalCaseName %>ResetDto, Api<%= pascalCaseName %>UpdateDto, <%= camelCaseName %>Example } from './<%= dashCaseName %>.documentation';
+import { <%= pascalCaseName %>CreateDto, <%= pascalCaseName %>Dto, <%= pascalCaseName %>ResetDto, <%= pascalCaseName %>UpdateDto, resource<%= pascalCaseName %>Path } from './<%= dashCaseName %>.dto';
+import { <%= pascalCaseName %>Service } from './<%= dashCaseName %>.service';
+import { <%= pascalCaseName %>CreateValidationDto, <%= pascalCaseName %>ResetValidationDto, <%= pascalCaseName %>UpdateValidationDto } from './<%= dashCaseName %>.validation';
+
+@ApiTags(resource<%= pascalCaseName %>Path)
+@Controller(resource<%= pascalCaseName %>Path)
+export class <%= pascalCaseName %>Controller {
+  constructor(private service: <%= pascalCaseName %>Service) {
+  }
+
+  @Post()
+  @ApiBody({ type: Api<%= pascalCaseName %>CreateDto })
+  @ApiCreatedResponse({ type: Api<%= pascalCaseName %>Dto })
+  @ApiBadRequestResponse()
+  create(@Body(new ValidationPipe({ expectedType: <%= pascalCaseName %>CreateValidationDto, exceptionFactory: resourceExceptionFactory })) dto: <%= pascalCaseName %>CreateDto): Observable<<%= pascalCaseName %>Dto> {
+    return this.service.create(dto);
+  }
+
+  @Get()
+  @UseInterceptors(PaginatedItemsInterceptor)
+  @ApiQuery({ name: 'page', type: 'integer', example: 0 })
+  @ApiQuery({ name: 'size', type: 'integer', example: 10 })
+  @ApiOkResponse({ type: [Api<%= pascalCaseName %>Dto], headers: { 'X-Total-Count': {} }  })
+  findAll(@Query(new ValidationPipe({ transform: true, expectedType: PaginationParamsValidation, exceptionFactory: paramsExceptionFactory }), PaginationMappedParamsPipe) { skip, limit }: PaginationMappedParams): Observable<PaginatedItems<<%= pascalCaseName %>Dto>> {
+    return this.service.findAll(skip, limit);
+  }
+
+  @Get(':id')
+  @ApiParam({ name: 'id', example: <%= camelCaseName %>Example.id })
+  @ApiOkResponse({ type: Api<%= pascalCaseName %>Dto })
+  @ApiNotFoundResponse()
+  @ApiBadRequestResponse()
+  findOne(@Param('id', IsObjectIdPipe) id: string): Observable<<%= pascalCaseName %>Dto> {
+    return this.service.findOne(id);
+  }
+
+  @Patch(':id')
+  @ApiParam({ name: 'id', example: <%= camelCaseName %>Example.id  })
+  @ApiBody({ type: Api<%= pascalCaseName %>UpdateDto })
+  @ApiOkResponse({ type: Api<%= pascalCaseName %>Dto })
+  @ApiNotFoundResponse()
+  @ApiBadRequestResponse()
+  update(@Param('id', IsObjectIdPipe) id: string, @Body(new ValidationPipe({ expectedType: <%= pascalCaseName %>UpdateValidationDto, exceptionFactory: resourceExceptionFactory })) dto: <%= pascalCaseName %>UpdateDto): Observable<<%= pascalCaseName %>Dto> {
+    return this.service.update({ ...dto, id });
+  }
+
+  @Put(':id')
+  @ApiParam({ name: 'id', example: <%= camelCaseName %>Example.id  })
+  @ApiBody({ type: Api<%= pascalCaseName %>ResetDto })
+  @ApiOkResponse({ type: Api<%= pascalCaseName %>Dto })
+  @ApiNotFoundResponse()
+  @ApiBadRequestResponse()
+  reset(@Param('id', IsObjectIdPipe) id: string, @Body(new ValidationPipe({ expectedType: <%= pascalCaseName %>ResetValidationDto, exceptionFactory: resourceExceptionFactory })) dto: <%= pascalCaseName %>ResetDto): Observable<<%= pascalCaseName %>Dto> {
+    return this.service.reset({ ...dto, id });
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @ApiParam({ name: 'id', example: <%= camelCaseName %>Example.id })
+  @ApiNoContentResponse()
+  @ApiNotFoundResponse()
+  @ApiBadRequestResponse()
+  remove(@Param('id', IsObjectIdPipe) id: string): Observable<void> {
+    return this.service.remove(id);
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "root": "libs/api/service/match",
+  "sourceRoot": "libs/api/service/match/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/api/service/match/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/api/service/match"],
+      "options": {
+        "jestConfig": "libs/api/service/match/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

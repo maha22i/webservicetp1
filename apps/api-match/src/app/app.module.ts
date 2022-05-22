@@ -14,6 +14,8 @@ import { WinstonModule } from 'nest-winston';
 import { environment } from '../environments/environment';
 import { mongoDbUri } from './database.util';
 import { ClientCacheInterceptor } from './client-cache.interceptor';
+import { EditionHouseModule } from './edition-house/edition-house.module';
+import { TotoModule } from './toto/toto.module';
 
 @Module({
   imports: [
@@ -28,6 +30,8 @@ import { ClientCacheInterceptor } from './client-cache.interceptor';
     WinstonModule.forRoot(winstonConfig),
     EquipeModule,
     MatchModule,
+    EditionHouseModule,
+    TotoModule,
   ],
   controllers: [],
   providers: [

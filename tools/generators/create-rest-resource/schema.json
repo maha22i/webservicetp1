@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "create-rest-resource",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Resource name",
+      "x-prompt": "What is the name of the resource?",
+      "default": "toto",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "project": {
+      "type": "string",
+      "description": "Resource project",
+      "default": "api-match",
+      "x-prompt": "What is the project of the resource?"
+    },
+    "directory": {
+      "type": "string",
+      "description": "Resource directory",
+      "default": "app",
+      "x-prompt": {
+        "message": "What is the directory of the resource?",
+        "items": [
+          {
+            "value": "app",
+            "label": "It is an app resource"
+          },
+          {
+            "value": "",
+            "label": "It is a root resource"
+          }
+        ]
+      }
+    }
+  },
+  "required": ["name"]
+}

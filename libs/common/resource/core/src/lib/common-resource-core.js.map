@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "common-resource-core.js",
+  "sourceRoot": "",
+  "sources": [
+    "common-resource-core.ts"
+  ],
+  "names": [],
+  "mappings": ";;;AAAA,SAAgB,kBAAkB;IAChC,OAAO,sBAAsB,CAAC;AAChC,CAAC;AAFD,gDAEC;AAEY,QAAA,aAAa,GAAG,KAAK,CAAC"
+}

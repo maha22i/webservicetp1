@@ -1,4 +1,3 @@
-import { ApiAbstractService } from './api-abstract.service';
 import {
   ApiException,
   ApiParamsStructureInvalidException,
@@ -10,7 +9,6 @@ import {
   PaginationMappedParams,
   PaginationParamsValidation,
 } from '@webservicetp1/api/core/pagination';
-import { EntityWithId } from '@webservicetp1/api/repository/core';
 import { IsObjectIdPipe } from '@webservicetp1/api/validation/id';
 import { PaginationMappedParamsPipe } from '@webservicetp1/api/validation/pagination';
 import {
@@ -46,8 +44,11 @@ import {
 } from '@nestjs/swagger';
 import { ValidationError } from 'class-validator';
 import { Observable } from 'rxjs';
+import { ApiAbstractService } from './api-abstract.service';
 
-const resourceExceptionFactory = (errors: ValidationError[]): ApiException => {
+export const resourceExceptionFactory = (
+  errors: ValidationError[]
+): ApiException => {
   return new ApiResourceStructureInvalidException(
     null,
     errors.map((error) => ({
@@ -57,7 +58,9 @@ const resourceExceptionFactory = (errors: ValidationError[]): ApiException => {
   );
 };
 
-const paramsExceptionFactory = (errors: ValidationError[]): ApiException => {
+export const paramsExceptionFactory = (
+  errors: ValidationError[]
+): ApiException => {
   return new ApiParamsStructureInvalidException(
     null,
     errors.map((error) => ({
@@ -68,7 +71,6 @@ const paramsExceptionFactory = (errors: ValidationError[]): ApiException => {
 };
 
 interface AbstractControllerOptions<
-  TEntity,
   TDto extends Dto,
   TCreateDto = CreateDto<TDto>,
   TUpdateDto = UpdateDto<TDto>,
@@ -106,20 +108,13 @@ export function ApiAbstractControllerFactory<
   TUpdateDto = UpdateDto<TDto>,
   TResetDto = ResetDto<TDto>
 >(
-  options: AbstractControllerOptions<
-    TEntity,
-    TDto,
-    TCreateDto,
-    TUpdateDto,
-    TResetDto
-  >
+  options: AbstractControllerOptions<TDto, TCreateDto, TUpdateDto, TResetDto>
 ): new (
   service: ApiAbstractService<TEntity, TDto, TCreateDto, TUpdateDto, TResetDto>
 ) => ApiController<TEntity, TDto, TCreateDto, TUpdateDto, TResetDto> {
   class ApiAbstractController<
     TEntity,
     TDto extends Dto,
-    TEntityWithId = EntityWithId<TEntity>,
     TCreateDto = CreateDto<TDto>,
     TUpdateDto = UpdateDto<TDto>,
     TResetDto = ResetDto<TDto>

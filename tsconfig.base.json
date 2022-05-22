@@ -32,6 +32,15 @@
       "@webservicetp1/api/repository/error": [
         "libs/api/repository/error/src/index.ts"
       ],
+      "@webservicetp1/api/repository/uri": [
+        "libs/api/repository/uri/src/index.ts"
+      ],
+      "@webservicetp1/api/service/equipe": [
+        "libs/api/service/equipe/src/index.ts"
+      ],
+      "@webservicetp1/api/service/match": [
+        "libs/api/service/match/src/index.ts"
+      ],
       "@webservicetp1/api/validation/core": [
         "libs/api/validation/core/src/index.ts"
       ],

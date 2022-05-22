@@ -1,0 +1,16 @@
+import { CreateDocumentationDtoFactory, ResetDocumentationDtoFactory, UpdateDocumentationDtoFactory } from '@webservicetp1/api/documentation/core';
+import { ApiProperty } from '@nestjs/swagger';
+import { <%= pascalCaseName %>CreateDto, <%= pascalCaseName %>Dto, <%= pascalCaseName %>ResetDto, <%= pascalCaseName %>UpdateDto } from './<%= dashCaseName %>.dto';
+
+export const <%= camelCaseName %>Example: <%= pascalCaseName %>Dto = {
+  id: '6214c0f2857cfb3569c19166',
+}
+
+export class Api<%= pascalCaseName %>Dto implements <%= pascalCaseName %>Dto {
+  @ApiProperty({ example: <%= camelCaseName %>Example.id }) id: string;
+}
+
+export class Api<%= pascalCaseName %>CreateDto extends CreateDocumentationDtoFactory(Api<%= pascalCaseName %>Dto) implements <%= pascalCaseName %>CreateDto {}
+export class Api<%= pascalCaseName %>UpdateDto extends UpdateDocumentationDtoFactory(Api<%= pascalCaseName %>Dto) implements <%= pascalCaseName %>UpdateDto {}
+export class Api<%= pascalCaseName %>ResetDto extends ResetDocumentationDtoFactory(Api<%= pascalCaseName %>Dto) implements <%= pascalCaseName %>ResetDto {}
+

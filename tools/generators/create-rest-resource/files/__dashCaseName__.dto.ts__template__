@@ -1,0 +1,11 @@
+import { CreateDto, Dto, ResetDto, UpdateDto } from '@webservicetp1/common/resource/core';
+
+export const resource<%= pascalCaseName %>Path = '<%= dashCaseName %>s';
+
+// eslint-disable @typescript-eslint/no-empty-interface
+export interface <%= pascalCaseName %>Dto extends Dto {
+}
+
+export type <%= pascalCaseName %>CreateDto = CreateDto<<%= pascalCaseName %>Dto>;
+export type <%= pascalCaseName %>UpdateDto = UpdateDto<<%= pascalCaseName %>Dto>;
+export type <%= pascalCaseName %>ResetDto = ResetDto<<%= pascalCaseName %>Dto>;

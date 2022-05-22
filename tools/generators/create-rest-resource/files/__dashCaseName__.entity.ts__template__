@@ -1,0 +1,10 @@
+import { EntityDocument, EntityWithId } from '@webservicetp1/api/repository/core';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+
+@Schema({ collection: '<%= camelCaseName %>s' })
+export class <%= pascalCaseName %>Entity {
+}
+
+export type <%= pascalCaseName %>EntityWithId = EntityWithId<<%= pascalCaseName %>Entity>;
+export type <%= pascalCaseName %>Document = EntityDocument<<%= pascalCaseName %>Entity>;
+export const <%= pascalCaseName %>Schema = SchemaFactory.createForClass(<%= pascalCaseName %>Entity);

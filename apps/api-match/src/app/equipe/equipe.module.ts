@@ -1,20 +1,15 @@
-import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
+import { CacheModule, Module } from '@nestjs/common';
+import { ApiServiceEquipeModule } from '@webservicetp1/api/service/equipe';
 import { EquipeController } from './equipe.controller';
-import { EquipeEntity, EquipeSchema } from './equipe.entity';
-import { EquipeMapper } from './equipe.mapper';
-import { EquipeService } from './equipe.service';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([
-      {
-        name: EquipeEntity.name,
-        schema: EquipeSchema,
-      },
-    ]),
+    CacheModule.register({
+      ttl: 60,
+      max: 10,
+    }),
+    ApiServiceEquipeModule,
   ],
   controllers: [EquipeController],
-  providers: [EquipeService, EquipeMapper],
 })
 export class EquipeModule {}

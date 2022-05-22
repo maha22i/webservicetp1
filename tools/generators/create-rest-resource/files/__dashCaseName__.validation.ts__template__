@@ -1,0 +1,12 @@
+import { CreateValidationDtoFactory, ResetValidationDtoFactory, UpdateValidationDtoFactory } from '@webservicetp1/api/validation/core';
+import { IsObjectId } from '@webservicetp1/api/validation/id';
+import { <%= pascalCaseName %>CreateDto, <%= pascalCaseName %>Dto, <%= pascalCaseName %>ResetDto, <%= pascalCaseName %>UpdateDto } from './<%= dashCaseName %>.dto';
+
+export class <%= pascalCaseName %>ValidationDto implements <%= pascalCaseName %>Dto {
+  @IsObjectId() id: string;
+}
+
+export class <%= pascalCaseName %>CreateValidationDto extends CreateValidationDtoFactory(<%= pascalCaseName %>ValidationDto) implements <%= pascalCaseName %>CreateDto {}
+export class <%= pascalCaseName %>UpdateValidationDto extends UpdateValidationDtoFactory(<%= pascalCaseName %>ValidationDto) implements <%= pascalCaseName %>UpdateDto {}
+export class <%= pascalCaseName %>ResetValidationDto extends ResetValidationDtoFactory(<%= pascalCaseName %>ValidationDto) implements <%= pascalCaseName %>ResetDto {}
+

@@ -1,0 +1,74 @@
+import { Test } from '@nestjs/testing';
+import { <%= pascalCaseName %>Dto } from './<%= dashCaseName %>.dto';
+import { <%= pascalCaseName %>EntityWithId } from './<%= dashCaseName %>.entity';
+import { <%= pascalCaseName %>Mapper } from './<%= dashCaseName %>.mapper';
+
+describe('<%= pascalCaseName %>Mapper', () => {
+  let mapper: <%= pascalCaseName %>Mapper;
+
+  beforeEach(async () => {
+    const module = await Test.createTestingModule({
+      providers: [<%= pascalCaseName %>Mapper],
+    }).compile();
+
+    mapper = module.get<<%= pascalCaseName %>Mapper>(<%= pascalCaseName %>Mapper);
+  });
+
+  describe('mapEntityToDto', () => {
+    it('should return a dto', () => {
+      const entity: <%= pascalCaseName %>EntityWithId = {
+        id: '123',
+      };
+      const expectedDtoStructure: <%= pascalCaseName %>Dto = { id: '' };
+
+      const result = mapper.mapEntityToDto(entity);
+
+      expect(result).toBeDefined();
+      expect(result).not.toBeNull();
+      Object.keys(expectedDtoStructure).forEach(element => {
+        expect(Object.keys(result)).toContain(element);
+        expect(typeof result[element]).toBe(typeof expectedDtoStructure[element]);
+      });
+    });
+  });
+
+  describe('mapEntitiesToDtos', () => {
+    it('should return array of Dto', () => {
+      const entities: <%= pascalCaseName %>EntityWithId[] = [
+        {  },
+        {  },
+      ];
+
+      const result = mapper.mapEntitiesToDtos(entities);
+
+      expect(result).toBeInstanceOf(Array);
+    });
+
+    it('should return array of Dto with the same size as array of Entity', () => {
+      const entities: <%= pascalCaseName %>EntityWithId[] = [
+        {  },
+        {  },
+      ];
+
+      const result = mapper.mapEntitiesToDtos(entities);
+
+      expect(result.length).toBe(entities.length);
+    });
+
+    it('should return an empty array', () => {
+      const entities: <%= pascalCaseName %>EntityWithId[] = [];
+
+      const result = mapper.mapEntitiesToDtos(entities);
+
+      expect(result.length).toBe(0);
+    });
+
+    it('should return undefined if null array of Entity', () => {
+      const entities: <%= pascalCaseName %>EntityWithId[] = null;
+
+      const result = mapper.mapEntitiesToDtos(entities);
+
+      expect(result).toBeUndefined();
+    });
+  })
+});
